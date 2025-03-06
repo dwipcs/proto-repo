@@ -1,0 +1,40 @@
+syntax = "proto3";
+
+package auth.v1;
+
+import "google/api/annotations.proto";
+import "auth/v1/auth_messages.proto";
+
+option go_package = "github.com/yourorg/proto/auth/v1;authv1";
+
+service AuthService {
+  // Health Check
+  rpc Check (HealthCheckRequest) returns (HealthCheckResponse) {
+    option (google.api.http) = {
+      get: "/api/v1/auth/health"
+    };
+  }
+
+  // Register User
+  rpc Register (RegisterRequest) returns (RegisterResponse) {
+    option (google.api.http) = {
+      post: "/api/v1/auth/register"
+      body: "*"
+    };
+  }
+
+  // Login User
+  rpc Login (LoginRequest) returns (LoginResponse) {
+    option (google.api.http) = {
+      post: "/api/v1/auth/login"
+      body: "*"
+    };
+  }
+
+  // Get User Profile
+  rpc GetProfile (ProfileRequest) returns (ProfileResponse) {
+    option (google.api.http) = {
+      get: "/api/v1/auth/profile"
+    };
+  }
+}

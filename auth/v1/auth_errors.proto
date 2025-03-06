@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+package auth.v1;
+
+option go_package = "github.com/yourorg/proto/auth/v1;authv1";
+
+enum AuthError {
+  AUTH_ERROR_UNSPECIFIED = 0;
+  AUTH_ERROR_INVALID_CREDENTIALS = 1;
+  AUTH_ERROR_USER_NOT_FOUND = 2;
+  AUTH_ERROR_UNAUTHORIZED = 3;
+}
